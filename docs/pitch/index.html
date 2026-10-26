@@ -73,7 +73,7 @@ h1 em{font-style:normal;color:var(--blue)}
 <section class="slide cover on" data-notes="[0:00 ~ 0:10] 한 문장으로 시작합니다. '리뷰 답변 담당자가 매일 하는 일을 AI로 줄이는 프로그램을 만들었고, 실제 토스 리뷰로 검증했습니다.' 처음 주제를 근거 부족으로 내려놓고 방향을 바꾼 이야기이기도 하다고 덧붙이고 1장으로 넘어갑니다.">
   <div class="kick">4주차 발표 · 내 문제를 AI로 해결한 과정과 실제 결과</div>
   <h1>CS 매니저의 리뷰 답변 운영 업무를 효율화하는&nbsp;<em>앱 리뷰 자동화 봇</em></h1>
-  <p>토스 앱 리뷰(<span style="letter-spacing: -0.16px;">Google/Apple App Store 기반)</span>&nbsp;2026년 7~9월 실데이터로 만든<br>■ 통합 앱 리뷰 크롤링, ■ AI 답변 생성 자동화, ■ 주/월간 VoC 분석 자동화</p>
+  <p>토스 앱 리뷰(<span style="letter-spacing: -0.16px;">Google Play/Apple App Store 기반)</span>&nbsp;2026년 7~9월 실데이터로 만든<br>■ 통합 앱 리뷰 크롤링, ■ 답변 초안 자동화, ■ 주/월간 VoC 분석 자동화</p>
   <div class="urls">발표자 박근우 · 5분<br><span>라이브 데모</span> pgw4798-dot.github.io/app-review-automation-bot<br><span>저장소</span> github.com/pgw4798-dot/app-review-automation-bot</div>
 </section>
 
@@ -82,7 +82,7 @@ h1 em{font-style:normal;color:var(--blue)}
   <div class="top"><span>1  문제정의</span><span class="time">40초</span></div>
   <h1>실 데이터가 없는 기존 가계부 자동화는 내려놓고,<br><em>실제 리뷰가 가리킨 CS 매니저의 업무</em>로 다시 문제 정의</h1>
   <div class="flow">
-    <div class="col"><h3>AS-IS  처음 문제정의</h3><ul><li><b>■ 가계부 자동 분류</b>에 대한 불만을 문제 정의</li><li>■ 토스앱 리뷰 약 11,000건 조사<div>&nbsp; &nbsp;- 결제 실 데이터 사용 어려움, 근거 없음.</div></li></ul></div>
+    <div class="col"><h3>AS-IS  처음 문제정의</h3><ul><li><b>■ 가계부 자동 분류</b>에 대한 불만을 문제 정의</li><li>■ 케이뱅크 리뷰 약 11,000건 조사<div>&nbsp; &nbsp;- 결제 실 데이터 사용 어려움, 근거 없음.</div></li></ul></div>
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
     <div class="col ai"><h3>방향 전환  선택</h3><ul><li>■ 앱 리뷰 데이터 = '공개 데이터'에 착안</li><li>■ 리뷰에 답변하는 <b>CS 매니저의 운영 업무</b><br><div><span style="letter-spacing: -0.01em;">&nbsp; &nbsp; -&nbsp;</span>스토어별 로그인, 확인, 건별 작성 매일 반복</div></li></ul></div>
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
@@ -107,7 +107,7 @@ h1 em{font-style:normal;color:var(--blue)}
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
     <div class="col ai"><h3>AI(Claude)가 한 일</h3><ul><li>■ 자동화 흐름을 <b>에이전트 5종</b>으로 설계</li><li>■ 수집, 분류, 초안, 분석 코드와 콘솔 제작</li><li>■ 결과를 확인하는 평가 스크립트 작성</li></ul></div>
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
-    <div class="col to"><h3>사람이 결정하는 일</h3><ul><li><b>■ 승인</b> 전에는 게시 완료 표시 불가</li><li>■ 환불·개인정보 등 고위험 CS는 에스컬레이션</li><li>■초안이 상황에 맞는지 최종 확인</li></ul></div>
+    <div class="col to"><h3>사람이 결정하는 일</h3><ul><li><b>■ 승인</b> 전에는 게시 완료 표시 불가</li><li>■ 환불·개인정보 등 고위험 CS는 에스컬레이션</li><li>■ 초안이 상황에 맞는지 최종 확인</li></ul></div>
   </div>
   <div class="bottom">
     <div class="stats">
@@ -123,11 +123,11 @@ h1 em{font-style:normal;color:var(--blue)}
   <div class="top"><span>3  실행과 결과</span><span class="time">100초</span><span class="demo">라이브 데모 ① ② ③ ④</span></div>
   <h1>토스 실제 리뷰 1,677건으로<br>수신함, 초안, 승인, <em>월간 리포트</em>로 이어집니다.</h1>
   <div class="flow" style="margin-top:34px">
-    <div class="col"><h3>AS-IS  CS 매니저의 기존 업무</h3><ul><li>■ 스토어별 개발자 ID 로그인</li><li>■ 앱 리뷰 확인</li><li>■ 템플릿으로 답변 작성</li><li>■ 건별 반복 작성 (비효율)</li></ul></div>
+    <div class="col"><h3>AS-IS  CS 매니저의 기존 업무</h3><ul><li>1. 스토어별 개발자 ID 로그인</li><li>2. 앱 리뷰 확인</li><li>3. 템플릿으로 답변 작성</li><li>4. 건별 반복 작성 (비효율)</li></ul></div>
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
-    <div class="col ai"><h3>AI 적용과 자동화</h3><ul><li>■ 두 스토어 리뷰 통합 수집</li><li>■ 13개 유형 자동 분류</li><li>■ 토스 실제 답변을 초안으로</li><li>■ 초안 일괄 생성, 승인 필수</li></ul></div>
+    <div class="col ai"><h3>AI 적용과 자동화</h3><ul><li>■ 두 스토어 리뷰 통합 자동 수집(일단위)</li><li>■ 13개 유형 자동 분류</li><li>■ 토스 실제 답변을 초안으로</li><li>■ 초안 일괄 생성, 승인 필수</li></ul></div>
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
-    <div class="col to"><h3>TO-BE</h3><ul><li>■ 1,677건을 한 화면에서</li><li>■ 미답변 137건 우선 정렬</li><li>■ 초안과 근거 사례 3건</li><li>■ 일괄 생성 후 승인만</li></ul></div>
+    <div class="col to"><h3>TO-BE</h3><ul><li>■ 1,677건을 한 화면에서</li><li>■ 미답변 137건 우선 정렬</li><li>■ 초안과 근거 사례 3건을 함께 노출</li><li>■ 일괄 생성 후 승인만</li></ul></div>
   </div>
   <div class="shots" style="margin-top:26px">
     <div class="shot"><img src="img/inbox.png" alt="수신함과 초안"><span class="tag">① ② 수신함과 초안</span></div>
@@ -145,14 +145,14 @@ h1 em{font-style:normal;color:var(--blue)}
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
     <div class="col ai"><h3>수정</h3><ul><li>■ 비슷한 사례의 답변 활용</li><li>■ 닉네임을 "고객님"으로 치환</li><li>■ 3점 이하만 고위험 표시</li></ul></div>
     <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
-    <div class="col to"><h3>TO-BE  같은 조건 재시험</h3><ul><li>■ 닮은 정도 0.08 → 0.54</li><li>■ 이름 남은 답변 0건</li><li>■ 4점 이상 고위험 0건</li></ul></div>
+    <div class="col to"><h3>TO-BE  같은 조건 재시험</h3><ul><li>■ 기존 답변과 유사도 0.08 → 0.54</li><li>■ 이름 남은 답변 0건</li><li>■ 4점 이상 고위험 0건</li></ul></div>
   </div>
   <div class="bottom">
     <div class="stats">
-      <div class="stat"><div class="n b">0.08 → 0.54</div><div class="l">토스 실제 답변과 닮은 정도(0~1), 검증 리뷰 252건 기준</div></div>
+      <div class="stat"><div class="n b">0.08 → 0.54</div><div class="l">토스 실제 답변과 닮은 정도(0~1),&nbsp;<div>검증 리뷰 252건 기준</div></div></div>
       <div class="stat"><div class="n">0건</div><div class="l">치환 후 고객 이름이 남은 토스 답변</div></div>
     </div>
-    <div class="todo"><b>한계</b><ul><li>■ 실제 게시: 스토어 개발자 계정 연동 필요</li><li>■ 서버 구동: 서버·DB 연동 필요</li><li>■ 초안 적합성은 사람이 최종 확인</li><li>■ 시간 절감·사용 검증은 미측정</li></ul></div>
+    <div class="todo"><b>한계</b><ul><li>■ 실제 게시: 스토어 개발자 계정 연동 필요</li><li>■ 실제 서버 구동: 서버·DB 연동 필요</li><li>■ 초안 적합성은 사람이 최종 확인</li><li>■ 시간 절감·사용 검증은 측정 필요</li></ul></div>
   </div>
 </section>
 
@@ -170,7 +170,7 @@ h1 em{font-style:normal;color:var(--blue)}
   <div class="bottom">
     <div class="stats">
       <div class="stat"><div class="n b">수정률</div><div class="l">다음 개선: 담당자가 초안을 얼마나 고치는지 측정</div></div>
-      <div class="stat"><div class="n">미측정</div><div class="l">시간 절감은 측정 전, 측정한 개선은 초안 닮은 정도 0.08 → 0.54</div></div>
+      <div class="stat"><div class="n">측정 필요</div><div class="l">시간 절감은 측정 전, 측정한 개선은 초안 닮은 정도 0.08 → 0.54</div></div>
     </div>
     <div class="todo"><b>배경</b><ul><li>■ 멘토 피드백: 가계부 프로젝트 기준</li><li>■ 방향 전환: 근거 재확인 후 결정</li></ul></div>
   </div>
@@ -220,4 +220,4 @@ fit();go(i);
 </script>
 
 
-</body><aside-selection-handle data-placement="top-left" style="position: fixed; z-index: 2147483647; pointer-events: none; background: transparent; display: block; left: 0px; top: 0px; transition: none; will-change: transform, width, height; transform: translate3d(604.481px, 375.953px, 0px); height: 40px; width: 40px; visibility: hidden; opacity: 0;"></aside-selection-handle></html>
+</body></html>
