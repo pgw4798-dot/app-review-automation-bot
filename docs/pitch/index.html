@@ -59,6 +59,7 @@ h1 em{font-style:normal;color:var(--blue)}
 .row b{color:var(--blue-d)}
 .row span{color:var(--t2)}
 /* 진행 표시 */
+#editbar{position:fixed;left:0;right:0;top:0;z-index:20;background:#3182f6;color:#fff;font-size:15px;padding:9px 18px;display:none;gap:14px;align-items:center;font-family:sans-serif}#editbar button{background:#fff;color:#1b64da;border:0;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer}body.editing #editbar{display:flex}body.editing [contenteditable]{outline:2px dashed #6aa8ff;outline-offset:3px;cursor:text}body.editing #hint{display:none}
 #bar{position:fixed;left:0;bottom:0;height:5px;background:var(--blue);transition:width .2s}
 #hint{position:fixed;right:18px;bottom:14px;color:#8b95a1;font-size:13px;font-family:sans-serif}
 #notes{position:fixed;left:0;right:0;bottom:0;background:rgba(15,18,24,.96);color:#e8eaee;padding:20px 40px 26px;font-size:20px;line-height:1.6;display:none;z-index:10;max-height:40vh;overflow:auto}
@@ -186,12 +187,13 @@ h1 em{font-style:normal;color:var(--blue)}
     <div class="row"><b>AI는 어디에 쓰였나</b><span>Claude는 에이전트 설계와 콘솔 제작에 사용. 콘솔의 분류, 초안, 분석은 규칙·검색·계산으로 자동화됨(초안은 저장된 토스 답변 중 비슷한 사례를 찾아온 것)</span></div>
     <div class="row"><b>미구현</b><span>스토어 개발자 계정 연동(실제 게시), 서버 또는 DB 연동, 서브에이전트 실제 실행, 자동 수집 스케줄</span></div>
     <div class="row"><b>아직 하지 않은 것</b><span>현업 사용성, 시간 절감, VoC 분류는 키워드 규칙 기반 1차 분류</span></div>
-    <div class="row"><b>조작</b><span>방향키·스페이스: 이동, N: 발표자 노트, F: 전체 화면, P 또는 인쇄: PDF 저장</span></div>
+    <div class="row"><b>조작</b><span>방향키·스페이스: 이동, N: 발표자 노트, F: 전체 화면, E: 글 편집, 인쇄: PDF 저장</span></div>
   </div>
 </section>
 
 </div>
-<div id="bar"></div><div id="hint">← → 이동 · N 노트 · F 전체화면</div>
+<div id="editbar"><span>편집 모드: 글을 클릭해서 고치세요. 슬라이드 이동은 아래 버튼</span><button onclick="go(i-1)">이전</button><button onclick="go(i+1)">다음</button><button onclick="nt.classList.toggle('on')">발표자 노트</button><button onclick="saveHtml()">저장 (⌘S)</button><button onclick="toggleEdit()">편집 종료 (Esc)</button></div>
+<div id="bar"></div><div id="hint">← → 이동 · N 노트 · F 전체화면 · E 편집</div>
 <div id="notes"></div>
 <script>
 const st=document.getElementById('stage'),sl=[...document.querySelectorAll('.slide')],bar=document.getElementById('bar'),nt=document.getElementById('notes');
@@ -199,14 +201,22 @@ let i=Math.max(0,Math.min(sl.length-1,(parseInt(location.hash.slice(1))||1)-1));
 function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);st.style.transform=`scale(${s}) translate(-50%,-50%)`;st.style.left='50%';st.style.top='50%';st.style.transformOrigin='0 0'}
 function go(n){i=Math.max(0,Math.min(sl.length-1,n));sl.forEach((s,k)=>s.classList.toggle('on',k===i));bar.style.width=((i+1)/sl.length*100)+'%';nt.textContent=sl[i].dataset.notes||'';history.replaceState(null,'','#'+(i+1))}
 addEventListener('resize',fit);
+let editing=false;
+function textEls(){return [...document.querySelectorAll('.slide *')].filter(e=>!(['IMG','SVG','PATH'].includes(e.tagName.toUpperCase()))&&[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()))}
+function toggleEdit(){editing=!editing;document.body.classList.toggle('editing',editing);textEls().forEach(e=>editing?e.setAttribute('contenteditable','true'):e.removeAttribute('contenteditable'));if(editing){nt.setAttribute('contenteditable','true')}else{nt.removeAttribute('contenteditable');nt.classList.remove('on')}}
+nt.addEventListener('input',()=>{if(editing)sl[i].dataset.notes=nt.textContent});
+function saveHtml(){const was=editing;const cur=i;if(was){document.body.classList.remove('editing');textEls().forEach(e=>e.removeAttribute('contenteditable'));nt.removeAttribute('contenteditable')}sl.forEach((x,k)=>x.classList.toggle('on',k===0));nt.classList.remove('on');const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));a.download='index.html';a.click();go(cur);if(was){document.body.classList.add('editing');textEls().forEach(e=>e.setAttribute('contenteditable','true'));nt.setAttribute('contenteditable','true')}}
 addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='s'&&editing){e.preventDefault();saveHtml();return}
+  if(editing){if(e.key==='Escape')toggleEdit();return}
+  if(e.key==='e'||e.key==='E'){toggleEdit();return}
   if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();go(i+1)}
   else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();go(i-1)}
   else if(e.key==='Home')go(0);else if(e.key==='End')go(sl.length-1);
   else if(e.key==='n'||e.key==='N')nt.classList.toggle('on');
   else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
 });
-addEventListener('click',e=>{if(e.target.closest('#notes'))return;go(e.clientX>innerWidth/2?i+1:i-1)});
+addEventListener('click',e=>{if(editing||e.target.closest('#notes')||e.target.closest('#editbar'))return;go(e.clientX>innerWidth/2?i+1:i-1)});
 fit();go(i);
 </script>
 </body>
