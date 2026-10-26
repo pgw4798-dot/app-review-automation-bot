@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>앱 리뷰 자동화 봇 · 4주차 발표</title>
@@ -73,27 +72,27 @@ h1 em{font-style:normal;color:var(--blue)}
 <!-- 표지 -->
 <section class="slide cover on" data-notes="[0:00 ~ 0:10] 한 문장으로 시작합니다. '리뷰 답변 담당자가 매일 하는 일을 AI로 줄이는 프로그램을 만들었고, 실제 토스 리뷰로 검증했습니다.' 처음 주제를 근거 부족으로 내려놓고 방향을 바꾼 이야기이기도 하다고 덧붙이고 1장으로 넘어갑니다.">
   <div class="kick">4주차 발표 · 내 문제를 AI로 해결한 과정과 실제 결과</div>
-  <h1>리뷰 답변 담당자의 매일을<br>줄이는 <em>앱 리뷰 자동화 봇</em></h1>
-  <p>토스 앱 리뷰 2026년 7~9월 실데이터로 만든<br>통합 수신함, 승인형 답변 초안, VoC 분석 콘솔</p>
+  <h1>CS 매니저의 리뷰 답변 운영 업무를 효율화하는&nbsp;<em>앱 리뷰 자동화 봇</em></h1>
+  <p>토스 앱 리뷰(<span style="letter-spacing: -0.16px;">Google/Apple App Store 기반)</span>&nbsp;2026년 7~9월 실데이터로 만든<br>■ 통합 앱 리뷰 크롤링, ■ AI 답변 생성 자동화, ■ 주/월간 VoC 분석 자동화</p>
   <div class="urls">발표자 박근우 · 5분<br><span>라이브 데모</span> pgw4798-dot.github.io/app-review-automation-bot<br><span>저장소</span> github.com/pgw4798-dot/app-review-automation-bot</div>
 </section>
 
 <!-- 1 문제정의 -->
 <section class="slide" data-notes="[0:10 ~ 0:50] 핵심 한 문장: '처음 잡은 문제는 근거 데이터를 찾지 못해 내려놓았고, 실제 리뷰가 가리킨 CS 매니저의 업무로 방향을 옮겼습니다.' 10월 21일에 케이뱅크 Google Play 약 11,000건을 훑었을 때 '가계부'는 0건, '분류'도 0건이었습니다(App Store 최근 500건도 0건). 그래서 공개 리뷰로 확인할 수 있는 문제로 바꿨습니다. 이번 데이터는 토스 7~9월 Google Play 1,347건이고 토스가 답하지 않은 리뷰가 137건입니다. 근거는 SK렌터카 VOC/CX 기획 담당자 채용공고의 업무 문장입니다.">
   <div class="top"><span>1  문제정의</span><span class="time">40초</span></div>
-  <h1>근거를 찾지 못한 문제는 내려놓고,<br><em>실제 리뷰가 가리킨 CS 매니저의 업무</em>로 옮겼다.</h1>
+  <h1>실 데이터가 없는 기존 가계부 자동화는 내려놓고,<br><em>실제 리뷰가 가리킨 CS 매니저의 업무</em>로 다시 문제 정의</h1>
   <div class="flow">
-    <div class="col"><h3>AS-IS  처음 문제정의</h3><ul><li><b>가계부 자동 분류</b>에 대한 불만을 PM이 파악</li><li>케이뱅크 리뷰 약 11,000건 조사 결과 근거 없음</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col ai"><h3>방향 전환  선택</h3><ul><li>공개 리뷰로 <b>확인되는 문제</b>로 이동</li><li>리뷰에 답하는 <b>CS 매니저</b>: 스토어별 로그인, 확인, 건별 작성을 매일 반복</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col to"><h3>TO-BE  이번 범위</h3><ul><li>통합 수신함</li><li>승인 후에만 게시하는 AI 답변 초안</li><li>주·월 VoC 분석</li></ul></div>
+    <div class="col"><h3>AS-IS  처음 문제정의</h3><ul><li><b>■ 가계부 자동 분류</b>에 대한 불만을 문제 정의</li><li>■ 토스앱 리뷰 약 11,000건 조사<div>&nbsp; &nbsp;- 결제 실 데이터 사용 어려움, 근거 없음.</div></li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col ai"><h3>방향 전환  선택</h3><ul><li>■ 앱 리뷰 데이터 = '공개 데이터'에 착안</li><li>■ 리뷰에 답변하는 <b>CS 매니저의 운영 업무</b><br><div><span style="letter-spacing: -0.01em;">&nbsp; &nbsp; -&nbsp;</span>스토어별 로그인, 확인, 건별 작성 매일 반복</div></li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col to"><h3>TO-BE  이번 범위</h3><ul><li>■ 스토어별 통합 수신함</li><li>■ 승인 후에만 게시하는 AI 답변 초안</li><li>■ 주·월 VoC 분석</li></ul></div>
   </div>
   <div class="bottom">
     <div class="stats">
-      <div class="stat"><div class="n r">0건</div><div class="l">케이뱅크 약 11,000건 중 '가계부' 언급 (10/21 조사)</div></div>
+      <div class="stat"><div class="n r">0건</div><div class="l">케이뱅크 약 11,000건 중&nbsp;<div>'가계부' 언급 (10/21 조사)</div></div></div>
       <div class="stat"><div class="n b">1,347건</div><div class="l">토스 Google Play 리뷰, 7/1~9/30</div></div>
-      <div class="stat"><div class="n">137건</div><div class="l">그중 토스가 아직 답하지 않은 리뷰</div></div>
+      
     </div>
     <div class="jd"><b>채용공고 근거 · SK렌터카 VOC/CX 기획 담당자</b><p>“VOC 및 CS 데이터 수집·분류·분석을 통한 핵심 고객 페인포인트 및 반복 이슈 도출”</p><p>“분기/정기 단위 VOC 종합 분석 보고서 작성”</p><div class="src">skcarrental.ninehire.site/job_posting/x77v6el2</div></div>
   </div>
@@ -102,78 +101,78 @@ h1 em{font-style:normal;color:var(--blue)}
 <!-- 2 AI 활용 이유 -->
 <section class="slide" data-notes="[0:50 ~ 1:30] 핵심: '매일 반복되는 확인과 초안 작성은 자동화하고, 승인과 위험 판단은 사람에게 남겼습니다.' 멘토 2주차 피드백의 원칙, 즉 규칙을 먼저 쓰고 최종 결정은 사람이라는 구조를 리뷰 답변으로 옮긴 것입니다. 자동화는 분류, 비슷한 과거 답변 찾기, 글자 수·개인정보·고위험 표시입니다. 초안은 새로 쓴 글이 아니라 토스가 실제로 남긴 답변 1,210건 중에서 비슷한 리뷰에 달린 답변을 찾아오는 방식입니다. Claude는 이 자동화 흐름의 설계와 제작에 썼고, 서브에이전트를 직접 실행해 보지는 못했습니다.">
   <div class="top"><span>2  AI 활용 이유</span><span class="time">40초</span></div>
-  <h1>반복되는 확인과 초안 작성은 자동화하고,<br><em>승인과 위험 판단은 사람에게 남겼다.</em></h1>
+  <h1>반복되는 확인과 초안 작성은 자동화하고,<br><em>승인과 위험 판단은 사람에게 남깁니다.</em></h1>
   <div class="flow">
-    <div class="col"><h3>자동화한 일</h3><ul><li>리뷰를 13개 유형으로 <b>자동 분류</b></li><li>비슷한 과거 리뷰를 찾아 토스의 <b>실제 답변을 초안으로 제시</b></li><li>글자 수, 개인정보, 고위험을 자동 표시</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col ai"><h3>AI(Claude)가 한 일</h3><ul><li>자동화 흐름을 <b>에이전트 5종</b>으로 설계</li><li>수집, 분류, 초안, 분석 코드와 콘솔 제작</li><li>결과를 확인하는 평가 스크립트 작성</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col to"><h3>사람이 결정하는 일</h3><ul><li><b>승인</b> 전에는 게시 완료 표시 불가</li><li>환불·개인정보 등 고위험은 에스컬레이션 확인</li><li>초안이 상황에 맞는지 최종 확인</li></ul></div>
+    <div class="col"><h3>자동화한 일</h3><ul><li>■ 리뷰를 13개 유형으로 <b>자동 분류</b></li><li>■ 비슷한 과거 리뷰를 찾아 토스의 <b>실제 답변을 초안으로 제시(최대 3개)</b></li><li>■ 글자 수, 개인정보, 고위험을 자동 표시</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col ai"><h3>AI(Claude)가 한 일</h3><ul><li>■ 자동화 흐름을 <b>에이전트 5종</b>으로 설계</li><li>■ 수집, 분류, 초안, 분석 코드와 콘솔 제작</li><li>■ 결과를 확인하는 평가 스크립트 작성</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col to"><h3>사람이 결정하는 일</h3><ul><li><b>■ 승인</b> 전에는 게시 완료 표시 불가</li><li>■ 환불·개인정보 등 고위험 CS는 에스컬레이션</li><li>■초안이 상황에 맞는지 최종 확인</li></ul></div>
   </div>
   <div class="bottom">
     <div class="stats">
       <div class="stat"><div class="n b">1,210건</div><div class="l">색인한 토스 운영팀의 실제 답변</div></div>
-      <div class="stat"><div class="n">5종</div><div class="l">서브에이전트 문서(수집, 초안, 게시, 분석, 총괄)</div></div>
+      <div class="stat"><div class="n">5종</div><div class="l">서브에이전트 문서<div>(수집, 초안, 게시, 분석, 총괄)</div></div></div>
     </div>
-    <div class="todo"><b>한계</b><ul><li>서브에이전트 5종은 Claude Code에서 실행하지 않았음</li><li>초안은 새로 쓴 글이 아니라 토스가 과거에 남긴 답변을 찾아온 것</li></ul></div>
+    <div class="todo"><b>참고</b><ul><li>초안은 생성형 AI로 매 질문마다 새로운 답변을 생성하지 않고,&nbsp;</li><li>토스가 과거에 남긴 답변을 찾아 추천하는 방식으로 통일감 유지</li></ul></div>
   </div>
 </section>
 
 <!-- 3 실행과 결과 -->
 <section class="slide" data-notes="[1:30 ~ 3:10] 라이브 데모 약 70초. ① 수신함에서 미답변 리뷰 1건 선택 → ② '초안 만들기'를 누르고 아래 '비슷한 사례에서 토스가 실제로 남긴 답변' 3건 보여주기 → ③ 고위험이면 에스컬레이션 체크 없이는 '승인'이 막히는 것 보여준 뒤 승인 → ④ 리뷰 분석에서 월간 첫 줄 문장 읽기('9월에는 광고·리워드 불만이 107건으로, 8월보다 32% 늘었습니다'). 7월 50건, 8월 81건, 9월 107건은 Google Play 기준이고 분류는 키워드 규칙 1차 분류입니다. 데모가 안 열리면 이 슬라이드의 캡처 두 장으로 설명합니다.">
   <div class="top"><span>3  실행과 결과</span><span class="time">100초</span><span class="demo">라이브 데모 ① ② ③ ④</span></div>
-  <h1>토스 실제 리뷰 1,677건으로<br>수신함, 초안, 승인, <em>월간 리포트</em>가 이어졌다.</h1>
+  <h1>토스 실제 리뷰 1,677건으로<br>수신함, 초안, 승인, <em>월간 리포트</em>로 이어집니다.</h1>
   <div class="flow" style="margin-top:34px">
-    <div class="col"><h3>AS-IS  CS 매니저의 기존 업무</h3><ul><li><b>1</b> 각 스토어에 개발자 ID로 로그인</li><li><b>2</b> 앱 리뷰 확인</li><li><b>3</b> 템플릿과 답변 내용 작성</li><li><b>4</b> 건별로 반복 작성 (비효율)</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col ai"><h3>AI 적용과 자동화</h3><ul><li>수집 → 13개 유형 분류 → 유사 사례 초안</li><li>이름 마스킹, 증권·투자 유형 추가는 <b>직접 수정</b></li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col to"><h3>TO-BE</h3><ul><li>미답변 137건에 초안 + 근거 3건</li><li>분석 첫 줄: 9월 광고·리워드 불만 <b>107건</b>(7월 50, 8월 81)</li></ul></div>
+    <div class="col"><h3>AS-IS  CS 매니저의 기존 업무</h3><ul><li>■ 스토어별 개발자 ID 로그인</li><li>■ 앱 리뷰 확인</li><li>■ 템플릿으로 답변 작성</li><li>■ 건별 반복 작성 (비효율)</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col ai"><h3>AI 적용과 자동화</h3><ul><li>■ 두 스토어 리뷰 통합 수집</li><li>■ 13개 유형 자동 분류</li><li>■ 토스 실제 답변을 초안으로</li><li>■ 초안 일괄 생성, 승인 필수</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col to"><h3>TO-BE</h3><ul><li>■ 1,677건을 한 화면에서</li><li>■ 미답변 137건 우선 정렬</li><li>■ 초안과 근거 사례 3건</li><li>■ 일괄 생성 후 승인만</li></ul></div>
   </div>
   <div class="shots" style="margin-top:26px">
     <div class="shot"><img src="img/inbox.png" alt="수신함과 초안"><span class="tag">① ② 수신함과 초안</span></div>
     <div class="shot"><img src="img/evidence.png" alt="근거 사례"><span class="tag">② ③ 근거 사례와 승인</span></div>
-    <div class="demo-list"><b>시연 순서</b><ul><li><span>1</span>미답변 선택</li><li><span>2</span>초안과 근거 3건</li><li><span>3</span>고위험 승인 차단 후 승인</li><li><span>4</span>분석 화면 첫 문장</li></ul></div>
+    <div class="demo-list"><b>시연 순서</b><ul><li><span>1</span>미답변 선택</li><li><span>2</span>초안과 근거 3건 확인</li><li><span>3</span>고위험 승인 차단 후 승인</li><li><span>4</span>월간 리포트 확인</li></ul></div>
   </div>
 </section>
 
 <!-- 4 검증과 한계 -->
-<section class="slide" data-notes="[3:10 ~ 4:10] 핵심: '검증에서 나온 문제를 고쳐 다시 시험했습니다.' 수정 전후: 템플릿 초안은 비슷한 사례의 실제 답변을 찾아오는 방식으로, 스토어 답변 속 고객 닉네임은 '고객님'으로 치환(남은 것 없음 확인), '피싱 예방 좋음' 5점이 고위험으로 잡히던 문제는 3점 이하로 한정. 홀드아웃(학습 958건, 검증 252건)에서 실제 답변과의 유사도는 0.54, 무작위 답변은 0.31입니다. 다만 이것은 문구가 비슷하다는 뜻이지 상황에 맞다는 뜻이 아닙니다. VoC 분류는 키워드 규칙 기반 1차 분류입니다. 한계로 실제 게시는 각 스토어 개발자 계정 연동이, 실제 서버 구동은 서버 또는 DB 연동이 필요하다고 말합니다. 선택 시연 ⑤: 유사도가 낮은 리뷰에서 경고가 뜨는 것.">
+<section class="slide" data-notes="[3:10 ~ 4:10] 핵심: '검증에서 나온 문제를 고쳐 다시 시험했습니다.' 수정 전후: 템플릿 초안은 비슷한 사례의 실제 답변을 찾아오는 방식으로, 스토어 답변 속 고객 닉네임은 '고객님'으로 치환(남은 것 없음 확인), '피싱 예방 좋음' 5점이 고위험으로 잡히던 문제는 3점 이하로 한정. 같은 검증 리뷰 252건에서 수정 전 템플릿 초안이 실제 토스 답변과 닮은 정도는 0.08, 사례 검색 방식은 0.54입니다(무작위 답변은 0.31). 다만 이것은 문구가 비슷하다는 뜻이지 상황에 맞다는 뜻이 아닙니다. VoC 분류는 키워드 규칙 기반 1차 분류입니다. 한계로 실제 게시는 각 스토어 개발자 계정 연동이, 실제 서버 구동은 서버 또는 DB 연동이 필요하다고 말합니다. 선택 시연 ⑤: 유사도가 낮은 리뷰에서 경고가 뜨는 것.">
   <div class="top"><span>4  검증과 한계</span><span class="time">60초</span><span class="demo">라이브 데모 ⑤ (선택)</span></div>
-  <h1>검증에서 나온 문제를 <em>고쳐 다시 시험했다.</em></h1>
+  <h1>검증에서 나온 문제 3가지를<br><em>고쳐 다시 시험했습니다.</em></h1>
   <div class="flow">
-    <div class="col"><h3>AS-IS  수정 전</h3><ul><li>고정 템플릿 초안</li><li>스토어 답변에 고객 닉네임 포함</li><li>"피싱 예방 좋음"(5점)이 고위험으로 표시</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col ai"><h3>수정</h3><ul><li>비슷한 사례의 실제 답변을 찾아오는 방식으로 교체</li><li>닉네임을 "고객님"으로 치환</li><li>고위험 표시를 3점 이하로 한정</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col to"><h3>TO-BE  같은 조건 재시험</h3><ul><li>유사도 0.54 vs 무작위 0.31</li><li>이름이 남은 답변 없음</li><li>고위험 확인 없이는 승인 차단</li></ul></div>
+    <div class="col"><h3>AS-IS  수정 전</h3><ul><li>■ 템플릿 초안이 실제와 달랐음</li><li>■ 답변에 고객 닉네임 포함</li><li>■ 칭찬 리뷰가 고위험으로 표시</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col ai"><h3>수정</h3><ul><li>■ 비슷한 사례의 답변 활용</li><li>■ 닉네임을 "고객님"으로 치환</li><li>■ 3점 이하만 고위험 표시</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col to"><h3>TO-BE  같은 조건 재시험</h3><ul><li>■ 닮은 정도 0.08 → 0.54</li><li>■ 이름 남은 답변 0건</li><li>■ 4점 이상 고위험 0건</li></ul></div>
   </div>
   <div class="bottom">
     <div class="stats">
-      <div class="stat"><div class="n b">0.54</div><div class="l">실제 토스 답변과의 유사도(학습 958 / 검증 252). 무작위는 0.31</div></div>
+      <div class="stat"><div class="n b">0.08 → 0.54</div><div class="l">토스 실제 답변과 닮은 정도(0~1), 검증 리뷰 252건 기준</div></div>
       <div class="stat"><div class="n">0건</div><div class="l">치환 후 고객 이름이 남은 토스 답변</div></div>
     </div>
-    <div class="todo"><b>한계</b><ul><li>실제 게시를 위해서는 각 스토어 개발자 계정 연동이 필요</li><li>실제 서버에서 구동하려면 서버 또는 DB 연동이 필요</li><li>유사도는 문구가 비슷하다는 뜻이며, 상황에 맞는지는 사람이 확인</li><li>시간 절감과 담당자 사용 검증은 측정 안 함</li></ul></div>
+    <div class="todo"><b>한계</b><ul><li>■ 실제 게시: 스토어 개발자 계정 연동 필요</li><li>■ 서버 구동: 서버·DB 연동 필요</li><li>■ 초안 적합성은 사람이 최종 확인</li><li>■ 시간 절감·사용 검증은 미측정</li></ul></div>
   </div>
 </section>
 
 <!-- 5 개선과 내 기여 -->
 <section class="slide" data-notes="[4:10 ~ 5:00] 핵심: '방향 전환과 설계 기준을 직접 정했고, 멘토 피드백의 원칙은 새 설계로 옮겼습니다.' 멘토 1·2주차 피드백은 가계부 분류 프로젝트에 대한 것이었습니다. 방향 전환은 제가 결정했고, 피드백에서 가져온 원칙이 새 프로젝트의 설계가 됐습니다: 한계를 먼저 적기, 규칙 먼저 AI는 필요한 곳에만 사람이 최종 결정, 수집 범위와 기준일 명시, 작은 실행으로 증거 만들기. 제가 정한 기준은 승인 후 게시, 토스 실데이터와 7~9월, 스토어 연동 보류, 실제 답변 기반 초안, 디자인 방향입니다. 성과 수치는 없고 검증 수치만 있습니다. 다음 개선 한 가지는 담당자가 초안을 얼마나 고치는지 재는 것입니다.">
   <div class="top"><span>5  개선과 내 기여</span><span class="time">60초</span></div>
-  <h1>방향 전환과 설계 기준을 직접 정했고,<br><em>멘토 피드백의 원칙은 새 설계로 옮겼다.</em></h1>
+  <h1>방향 전환과 설계 기준을 다시 정했고,<br><em>멘토 피드백의 원칙은 새 설계로 옮겼습니다.</em></h1>
   <div class="flow">
-    <div class="col"><h3>AS-IS  1~2주차 피드백</h3><ul><li>한계를 먼저 밝힌 점을 긍정</li><li>규칙 먼저, AI는 이력 없을 때, 결정은 사람</li><li>수집 범위·기준일, 소규모 실행을 제안</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col ai"><h3>직접 정한 것</h3><ul><li><b>근거 부족을 확인</b>하고 주제를 CS 매니저 업무로 전환</li><li>승인 후 게시, 토스 실데이터 7~9월, 스토어 연동 보류</li><li>"실제 답변을 학습해 비슷하게"를 요구해 템플릿 한계 발견</li></ul></div>
-    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>
-    <div class="col to"><h3>TO-BE  현재</h3><ul><li>원칙 유지: 한계 슬라이드, 승인 게이트</li><li>범위 명시: Google Play 7/1~9/30, App Store 8/8~, 수집 10/27</li><li>작은 실행 대신 <b>실제 리뷰 1,677건</b>으로 전체 흐름 시험</li></ul></div>
+    <div class="col"><h3>AS-IS  1~2주차 멘토 피드백</h3><ul><li>■ 한계를 먼저 밝힘</li><li>■ 규칙 먼저, 결정은 사람</li><li>■ 수집 범위·기준일 제안</li><li>■ 소규모 실행 제안</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col ai"><h3>선택</h3><ul><li>■ 근거 부족 확인, 주제 전환</li><li>■ 승인 후 게시, 스토어 연동 보류</li><li>■ 토스 실데이터, 7~9월</li><li>■ 실제 답변 기반 초안 요구</li></ul></div>
+    <div class="chev"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></div>
+    <div class="col to"><h3>TO-BE  현재</h3><ul><li>■ 4장에 한계·미측정 명시</li><li>■ 승인·고위험 확인 게이트</li><li>■ 범위·기준일 명시 (10/27 수집)</li><li>■ 1,677건 전체 흐름 시험</li></ul></div>
   </div>
   <div class="bottom">
     <div class="stats">
-      <div class="stat"><div class="n b">1가지</div><div class="l">다음 개선: 담당자가 초안을 얼마나 고치는지(수정률) 측정</div></div>
-      <div class="stat"><div class="n">검증 수치</div><div class="l">측정한 성과는 유사도뿐. 시간 절감 등 성과 수치는 없음</div></div>
+      <div class="stat"><div class="n b">수정률</div><div class="l">다음 개선: 담당자가 초안을 얼마나 고치는지 측정</div></div>
+      <div class="stat"><div class="n">미측정</div><div class="l">시간 절감은 측정 전, 측정한 개선은 초안 닮은 정도 0.08 → 0.54</div></div>
     </div>
-    <div class="todo"><b>배경</b><ul><li>멘토 피드백은 가계부 프로젝트 기준이었고, 방향 전환은 근거를 다시 확인한 뒤 따로 결정했다</li></ul></div>
+    <div class="todo"><b>배경</b><ul><li>■ 멘토 피드백: 가계부 프로젝트 기준</li><li>■ 방향 전환: 근거 재확인 후 결정</li></ul></div>
   </div>
 </section>
 
@@ -219,5 +218,6 @@ addEventListener('keydown',e=>{
 addEventListener('click',e=>{if(editing||e.target.closest('#notes')||e.target.closest('#editbar'))return;go(e.clientX>innerWidth/2?i+1:i-1)});
 fit();go(i);
 </script>
-</body>
-</html>
+
+
+</body><aside-selection-handle data-placement="top-left" style="position: fixed; z-index: 2147483647; pointer-events: none; background: transparent; display: block; left: 0px; top: 0px; transition: none; will-change: transform, width, height; transform: translate3d(604.481px, 375.953px, 0px); height: 40px; width: 40px; visibility: hidden; opacity: 0;"></aside-selection-handle></html>
